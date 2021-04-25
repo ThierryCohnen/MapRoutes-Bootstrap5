@@ -55,7 +55,7 @@ dt {
 }
 
 .btn-cafes {
-    background-color: rgb(139, 196, 137);
+    /* background-color: rgb(139, 196, 137); */
     grid-area: 1 / 4 / 1 / 4;
 }
 
@@ -75,11 +75,11 @@ dt {
 }
 
 .button-open {
-    background-image: linear-gradient(to right, #26b482 12%, #93F9B9 30%);
+    /* background-image: linear-gradient(to right, #26b482 12%, #93F9B9 30%); */
 }
 
 .button-close {
-    background-image: linear-gradient(to right, #bd1d1d 12%, #ff7689 30%);
+    /* background-image: linear-gradient(to right, #bd1d1d 12%, #ff7689 30%);Ks */
 }
 
 .button01 {
@@ -93,21 +93,21 @@ dt {
 }
 
 ul li:hover {
-    background: rgb(128, 32, 32);
+    /* background: rgb(128, 32, 32); */
 }
 
 #cafes li:hover {
-    background: rgb(130, 151, 36);
+    /* background: rgb(130, 151, 36); */
 }
 
 ul li.checked {
     /* background: #888; */
-    color: #fff;
+    /* color: #fff; */
     text-decoration: line-through;
 }
 
 .close:hover {
-    background-color: #f44336;
+    /* background-color: #f44336; */
     color: white;
 }
 
@@ -131,7 +131,7 @@ ul {
 }
 
 .arrow:hover {
-    background-color: #f44336;
+    /* background-color: #f44336; */
     color: white;
 }
 
