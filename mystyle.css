@@ -1,6 +1,6 @@
 dt {
     text-align: center;
-    background-color: rgb(163, 228, 206);
+    /* background-color: rgb(163, 228, 206); */
 }
 
 .countrySelect {
@@ -42,8 +42,8 @@ dt {
 #grid01 {
     display: grid;
     text-align: center;
-    background-color: rgb(163, 228, 206);
-    border: 5px solid green;
+    /* background-color: rgb(163, 228, 206); */
+    /* border: 5px solid green; */
     padding: 5px;
     margin: 5px;
     grid-template-columns: 150px 1fr 1fr 1fr;
