@@ -1,77 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="mystyle.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="mystyle.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
     <script src="https://open.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=tLYgc73ZvPr0vM3p5DymagunmgVhVKKL"></script>
     <script src="https://open.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=tLYgc73ZvPr0vM3p5DymagunmgVhVKKL"></script>
     <title>Document Leaflet</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script src="main.js"></script>
-    <div style="width:60%"><a style="color: purple;" href="https://thierrycohnen.github.io/MapRoutes/">https://thierrycohnen.github.io/MapRoutes/</a> <br> &nbsp;&nbsp; est un programme de recherche d'itinéraires dans une ville. Il permet de choisir parmi des dizaines de milliers
-        de villes dans le monde et ensuite de choisir des points d'intérêts parmi ces 3 catégories: cafés, restaurants, cinémas.<br>
-        <br> &nbsp;&nbsp;On peut ajouter les points d'intérêts les uns après les autres en cliquant sur leur icône et en les ajoutant à l'itinéraire. Quand tous les points d'intérêts sont choisis, il suffit de cliquer sur 'Get directions' et l'application
-        trace l'itinéraire pédestre le plus court en notant les étapes à suivre ainsi que la distance à parcourir pour chaque étape.<br><br> Code source disponible sur: <a style="color: purple;" href="https://github.com/ThierryCohnen/MapRoutes">https://github.com/ThierryCohnen/MapRoutes</a></div>
-    <div id="grid01">
-        <div class="btn-cafes">
-            <div>
-                <label class="countrySelect" id="countrySelect01" for="countrySelect">Choose a country:</label>
-                <label class="citySelect" id="citySelect01" for="citySelect">Choose a city:</label>
-            </div>
-            <div>
-                <select id="countrySelect" onChange="countrySelected()"></select>
-                <select id="citySelect" onChange="citySelected()"></select>
-            </div>
-            <div>
-                <button class="button-open" id="button01-01" value="cafe" onclick="myFunction(this.value)">V</button><span>&nbsp;cafes</span>
-                <button class="button-close" id="button01-02" value="cafe" onclick="myFunction2(this.value)">X</button>
-                <button class="button-open" id="button01-03" value="restaurant" onclick="myFunction(this.value)">V</button><span>&nbsp;restaurants</span>
-                <button class="button-close" id="button01-04" value="restaurant" onclick="myFunction2(this.value)">X</button>
-                <button class="button-open" id="button01-05" value="cinema" onclick="myFunction(this.value)">V</button><span>&nbsp;cinemas</span>
-                <button class="button-close" id="button01-06" value="cinema" onclick="myFunction2(this.value)">X</button>
-                <br>
-                <br>
-                <button class="button-open" id="button01-07" onclick="{mymap.removeLayer(cities);cities.clearLayers();document.getElementById('route-narrative').innerHTML='';document.getElementById('cafes03').innerHTML='Distance:';myFunction1(0);}">V &nbsp;Get directions</button>
-                <button class="button-close" id="button01-08" onclick="{mymap.removeLayer(cities);cities.clearLayers();document.getElementById('route-narrative').innerHTML='';document.getElementById('cafes03').innerHTML='Distance:';}">X &nbsp;Remove directions</button>
-            </div>
-            <div class="cafes">
-                <ul class="cafes23" id="cafes02" style="background-color:rgba(40, 201, 134, 0.63)"> </ul>
-                <ul class="cafes23" id="cafes03" style="background-color:rgb(81, 226, 159)">Distance:</ul>
-                <div style="overflow: auto; width:400px; height:450px; " id="route-narrative"><br>Route:</div>
-                <ol class="cafes23" id="cafes" style="background-color:rgb(211, 209, 113); visibility: hidden;">cafes</ol>
-            </div>
-        </div>
-        <div class="mapid01" id="mapid">
-            <script>
-                var mymap = L.map('mapid', {
-                    layers: MQ.mapLayer(),
-                }).setView([51.505, -0.09], 14);
-                var mapstyle = 'https://a.tiles.mapbox.com/v3/mapbox.world-bright/{z}/{x}/{y}.png';
-                L.tileLayer(mapstyle, {
-                    maxZoom: 16,
-                    minZoom: 1,
-                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                        '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                    id: 'mapbox/streets-v11',
-                    tileSize: 512,
-                    zoomOffset: -1
-                }).addTo(mymap);
-                L.marker(mymap._initialCenter)
-                    // .bindLabel('A sweet static label!', {
-                    // noHide: true
-                    // })
-                    .addTo(mymap);
-                cities = L.layerGroup();
-            </script>
-        </div>
+    <div style="width: 60%">
+      <a style="color: purple" href="https://thierrycohnen.github.io/MapRoutes/"
+        >https://thierrycohnen.github.io/MapRoutes/</a
+      >
+      <br />
+      &nbsp;&nbsp; est un programme de recherche d'itinéraires dans une ville.
+      Il permet de choisir parmi des dizaines de milliers de villes dans le
+      monde et ensuite de choisir des points d'intérêts parmi ces 3 catégories:
+      cafés, restaurants, cinémas.<br />
+      <br />
+      &nbsp;&nbsp;On peut ajouter les points d'intérêts les uns après les autres
+      en cliquant sur leur icône et en les ajoutant à l'itinéraire. Quand tous
+      les points d'intérêts sont choisis, il suffit de cliquer sur 'Get
+      directions' et l'application trace l'itinéraire pédestre le plus court en
+      notant les étapes à suivre ainsi que la distance à parcourir pour chaque
+      étape.<br /><br />
+      Code source disponible sur:
+      <a style="color: purple" href="https://github.com/ThierryCohnen/MapRoutes"
+        >https://github.com/ThierryCohnen/MapRoutes</a
+      >
+      <button type="button" class="btn btn-primary">Primary</button>
     </div>
-</body>
-
+    <div id="grid01">
+      <div class="btn-cafes">
+        <div>
+          <label class="countrySelect" id="countrySelect01" for="countrySelect"
+            >Choose a country:</label
+          >
+          <label class="citySelect" id="citySelect01" for="citySelect"
+            >Choose a city:</label
+          >
+        </div>
+        <div>
+          <select id="countrySelect" onChange="countrySelected()"></select>
+          <select id="citySelect" onChange="citySelected()"></select>
+        </div>
+        <div>
+          <button
+            class="button-open"
+            id="button01-01"
+            value="cafe"
+            onclick="myFunction(this.value)"
+          >
+            V</button
+          ><span>&nbsp;cafes</span>
+          <button
+            class="button-close"
+            id="button01-02"
+            value="cafe"
+            onclick="myFunction2(this.value)"
+          >
+            X
+          </button>
+          <button
+            class="button-open"
+            id="button01-03"
+            value="restaurant"
+            onclick="myFunction(this.value)"
+          >
+            V</button
+          ><span>&nbsp;restaurants</span>
+          <button
+            class="button-close"
+            id="button01-04"
+            value="restaurant"
+            onclick="myFunction2(this.value)"
+          >
+            X
+          </button>
+          <button
+            class="button-open"
+            id="button01-05"
+            value="cinema"
+            onclick="myFunction(this.value)"
+          >
+            V</button
+          ><span>&nbsp;cinemas</span>
+          <button
+            class="button-close"
+            id="button01-06"
+            value="cinema"
+            onclick="myFunction2(this.value)"
+          >
+            X
+          </button>
+          <br />
+          <br />
+          <button
+            class="button-open"
+            id="button01-07"
+            onclick="{mymap.removeLayer(cities);cities.clearLayers();document.getElementById('route-narrative').innerHTML='';document.getElementById('cafes03').innerHTML='Distance:';myFunction1(0);}"
+          >
+            V &nbsp;Get directions
+          </button>
+          <button
+            class="button-close"
+            id="button01-08"
+            onclick="{mymap.removeLayer(cities);cities.clearLayers();document.getElementById('route-narrative').innerHTML='';document.getElementById('cafes03').innerHTML='Distance:';}"
+          >
+            X &nbsp;Remove directions
+          </button>
+        </div>
+        <div class="cafes">
+          <ul
+            class="cafes23"
+            id="cafes02"
+            style="background-color: rgba(40, 201, 134, 0.63)"
+          ></ul>
+          <ul
+            class="cafes23"
+            id="cafes03"
+            style="background-color: rgb(81, 226, 159)"
+          >
+            Distance:
+          </ul>
+          <div
+            style="overflow: auto; width: 400px; height: 450px"
+            id="route-narrative"
+          >
+            <br />Route:
+          </div>
+          <ol
+            class="cafes23"
+            id="cafes"
+            style="background-color: rgb(211, 209, 113); visibility: hidden"
+          >
+            cafes
+          </ol>
+        </div>
+      </div>
+      <div class="mapid01" id="mapid">
+        <script>
+          var mymap = L.map("mapid", {
+            layers: MQ.mapLayer(),
+          }).setView([51.505, -0.09], 14);
+          var mapstyle =
+            "https://a.tiles.mapbox.com/v3/mapbox.world-bright/{z}/{x}/{y}.png";
+          L.tileLayer(mapstyle, {
+            maxZoom: 16,
+            minZoom: 1,
+            attribution:
+              'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+              '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+              'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: "mapbox/streets-v11",
+            tileSize: 512,
+            zoomOffset: -1,
+          }).addTo(mymap);
+          L.marker(mymap._initialCenter)
+            // .bindLabel('A sweet static label!', {
+            // noHide: true
+            // })
+            .addTo(mymap);
+          cities = L.layerGroup();
+        </script>
+      </div>
+    </div>
+  </body>
 </html>
